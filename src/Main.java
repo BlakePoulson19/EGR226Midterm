@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception{
         System.out.println("Type something");
         Scanner s = new Scanner(System.in);
         String userInput = s.nextLine();
@@ -18,16 +18,16 @@ public class Main {
         byte[] node3Encrypted = Node3.Initialize(RAM.get(0)); // String is sent to the third and final node
         System.out.println(node3Encrypted);
         RAM.remove(0); // memory cleared
-        String node3Decrypted = Node3.Node3Decrypt(node3Encrypted); //
+        String node3Decrypted = Node3.Node3Decrypt(node3Encrypted); // 1st Decryption in 3rd node
         System.out.println(node3Decrypted);
-        RAM.add(node3Decrypted);
-        String node2Decrypted = Node2.Node2Decrypt(RAM.get(0));
+        RAM.add(node3Decrypted); // added to memory
+        String node2Decrypted = Node2.Node2Decrypt(RAM.get(0)); // 2nd decryption in 2nd node
         System.out.println(node2Decrypted);
-        RAM.remove(0);
-        RAM.add(node2Decrypted);
-        String node1Decrypted = Node1.Node1Decrypt(RAM.get(0));
+        RAM.remove(0); // memory cleared
+        RAM.add(node2Decrypted);  // added to memory
+        String node1Decrypted = Node1.Node1Decrypt(RAM.get(0)); // final decryption on 1st node
         System.out.println(node1Decrypted);
-        RAM.remove(0);
-        RAM.add(node1Decrypted);
+        RAM.remove(0); // memory cleared
+        RAM.add(node1Decrypted); // final decrypted String is added to memory
     }
 }
